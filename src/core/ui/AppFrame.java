@@ -1,5 +1,7 @@
 package core.ui;
 
+import features.shop.ui.ShopAppFrame;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -15,7 +17,7 @@ public class AppFrame extends JFrame {
         setJMenuBar(buildMenu());
 
         JPanel center = new JPanel(new BorderLayout());
-        center.add(new JLabel("Home - scegli una funzione dal menu", SwingConstants.CENTER), BorderLayout.CENTER);
+        center.add(new JLabel("Tramarossa ToolSuite - scegli una funzione dal menu", SwingConstants.CENTER), BorderLayout.CENTER);
         setContentPane(center);
     }
 
@@ -33,13 +35,13 @@ public class AppFrame extends JFrame {
         mView.add(miLog);
 
         JMenu mFeatures = new JMenu("Funzioni");
-        JMenuItem miPlaceholder1 = new JMenuItem("Export Magazzino (TODO)");
-        miPlaceholder1.addActionListener(e -> log("TODO: integrare modulo export magazzino"));
-        mFeatures.add(miPlaceholder1);
+        JMenuItem miShop = new JMenuItem("Shop: Export/Statistiche/Venduto...");
+        miShop.addActionListener(e -> new ShopAppFrame().showUI());
+        mFeatures.add(miShop);
 
-        JMenuItem miPlaceholder2 = new JMenuItem("Editor Articoli Easyfatt (TODO)");
-        miPlaceholder2.addActionListener(e -> log("TODO: integrare EF Importer / editor articoli"));
-        mFeatures.add(miPlaceholder2);
+        JMenuItem miEf = new JMenuItem("Easyfatt: Editor Articoli... (TODO)");
+        miEf.addActionListener(e -> log("TODO: integrare modulo EF-Importer"));
+        mFeatures.add(miEf);
 
         mb.add(mFile);
         mb.add(mFeatures);
